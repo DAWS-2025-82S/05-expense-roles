@@ -18,13 +18,13 @@
     enabled: yes
 
 # using vault password
-- name: connect to mysql server
-  community.mysql.mysql_info:
-    login_user: root
-    login_password: "{{ mysql_root_password }}"
-    login_host: "{{ mysql_host }}"
-  register: mysql_info
-  ignore_errors: true
+#- name: connect to mysql server
+#  community.mysql.mysql_info:
+#    login_user: root
+#    login_password: "{{ mysql_root_password }}"
+#    login_host: "{{ mysql_host }}"
+#  register: mysql_info
+#  ignore_errors: true
 
 # Using aws ssm parameter store
   
@@ -41,9 +41,9 @@
     msg: "MySQL info: {{ mysql_info }}"
 
 # using vault password
-- name: setup root password
-  ansible.builtin.command: " mysql_secure_installation --set-root-pass {{ mysql_root_password }} "
-  when: mysql_info.failed is true
+#- name: setup root password
+#  ansible.builtin.command: " mysql_secure_installation --set-root-pass {{ mysql_root_password }} "
+#  when: mysql_info.failed is true
 
 # Using aws ssm parameter store
 - name: setup root password
